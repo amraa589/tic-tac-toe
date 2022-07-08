@@ -22,6 +22,7 @@ function App() {
   const [outOfEmptyIndex, setOutOfEmptyIndex] = useState(false);
 
   useEffect(() => {
+    if(outOfEmptyIndex) return;
     const isComputerTurn =
       squares.filter((square) => square !== null).length % 2 === 1;
     const linesThatAre = (a, b, c) => {
@@ -102,6 +103,12 @@ function App() {
     }
   }
 
+  const reset  = () => {
+    setOutOfEmptyIndex(false);
+    setSquares(defaultSquares())
+    setWinner(null)
+  }
+
   return (
     <main>
       <Board>
@@ -122,6 +129,7 @@ function App() {
       {outOfEmptyIndex === true && winner === null && (
         <div className="result tie">Game Tie!</div>
       )}
+      <button onClick={reset}>Reset</button>
     </main>
   );
 }
