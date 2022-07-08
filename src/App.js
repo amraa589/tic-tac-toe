@@ -1,10 +1,17 @@
-import './App.css';
-import './Game.css';
-import Game from './component/Game';
+import "./App.css";
+import "./Game.css";
+import Game from "./component/Game";
+import { useEffect } from "react";
 function App() {
-  return( 
-    <Game/>
-  )
+
+  useEffect(() => {
+    console.log("App.js Mounted")
+  }, [])
+  return (
+    <>
+      <Game />
+    </>
+  );
 }
 
 export default App;
